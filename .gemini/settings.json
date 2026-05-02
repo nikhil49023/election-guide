@@ -1,0 +1,28 @@
+{
+  "project": {
+    "name": "Gemini Hackathon Setup",
+    "description": "Token-efficient hackathon coding environment."
+  },
+  "behavior": {
+    "concise_responses": true,
+    "prefer_surgical_edits": true,
+    "validation_required": true,
+    "max_plan_steps": 5,
+    "ignore_patterns": [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.next/**",
+      "**/coverage/**",
+      "**/package-lock.json",
+      "**/yarn.lock",
+      "**/.git/**"
+    ]
+  },
+  "prompts": {
+    "directory": "prompts"
+  },
+  "agents": {
+    "directory": "agents"
+  }
+}
