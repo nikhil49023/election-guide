@@ -1,5 +1,5 @@
 import { google } from '@ai-sdk/google';
-import { createDataStreamResponse, formatDataStreamPart, generateText } from 'ai';
+import { createDataStreamResponse, formatDataStreamPart, generateText, type CoreMessage } from 'ai';
 import { z } from 'zod';
 import { buildEciKnowledgeBase } from '@/lib/eci-rules';
 
@@ -120,7 +120,7 @@ export async function POST(req: Request) {
     const validMessages = messages.filter(m => m.role !== 'data');
     const result = await generateText({
       model: google(process.env.GEMINI_MODEL || 'gemma-4-26b-a4b-it'),
-      messages: validMessages as any,
+      messages: validMessages as CoreMessage[],
       system: systemPrompt,
       temperature: 0.2,
     });
