@@ -117,9 +117,10 @@ export async function POST(req: Request) {
   }
 
   try {
+    const validMessages = messages.filter(m => m.role !== 'data');
     const result = await generateText({
       model: google(process.env.GEMINI_MODEL || 'gemma-4-26b-a4b-it'),
-      messages,
+      messages: validMessages as any,
       system: systemPrompt,
       temperature: 0.2,
     });
